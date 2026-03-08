@@ -261,6 +261,13 @@ async def analyze_resume(
 async def health():
     return {"status": "ok", "api_key_set": bool(os.environ.get("ANTHROPIC_API_KEY"))}
 
+@app.get("/privacy", response_class=HTMLResponse)
+async def privacy(request: Request):
+    return templates.TemplateResponse("privacy.html", {"request": request})
+
+@app.get("/terms", response_class=HTMLResponse)
+async def terms(request: Request):
+    return templates.TemplateResponse("terms.html", {"request": request})
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
