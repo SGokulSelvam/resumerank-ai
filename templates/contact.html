@@ -315,8 +315,9 @@
 </footer>
 
 <script>
-function handleSubmit() {
+async function handleSubmit() {
   const firstName = document.getElementById('first-name').value;
+  const lastName = document.getElementById('last-name').value;
   const email = document.getElementById('email').value;
   const subject = document.getElementById('subject').value;
   const message = document.getElementById('message').value;
@@ -331,13 +332,35 @@ function handleSubmit() {
     return;
   }
 
-  // Show success message
-  document.getElementById('contact-form').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
 
-  // In production: connect to email service like EmailJS, Formspree, or your backend
-  console.log('Form submitted:', { firstName, email, subject, message });
+  try {
+    const response = await fetch('https://formspree.io/f/xnjgnldd', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: firstName + ' ' + lastName,
+        email: email,
+        subject: subject,
+        message: message
+      })
+    });
+
+    if (response.ok) {
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please try again!');
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+    }
+  } catch (error) {
+    alert('Network error. Please try again!');
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
+  }
 }
-</script>
-</body>
+</script></body>
 </html>
