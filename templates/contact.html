@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us — ResumeRank AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <style>
+    .contact-page {
+      max-width: 900px; margin: 0 auto;
+      padding: 120px 24px 80px;
+      position: relative; z-index: 1;
+    }
+    .contact-badge {
+      display: inline-block;
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.2);
+      color: var(--cyan); border-radius: 100px;
+      padding: 6px 20px; font-size: 0.8rem;
+      font-weight: 600; margin-bottom: 20px;
+    }
+    .contact-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 2.8rem; margin-bottom: 12px; line-height: 1.1;
+    }
+    .contact-sub {
+      color: var(--muted); font-size: 1.05rem;
+      margin-bottom: 48px; line-height: 1.7;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 24px;
+    }
+    /* Info Cards */
+    .info-cards { display: flex; flex-direction: column; gap: 16px; }
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 0.3s;
+    }
+    .info-card:hover { border-color: rgba(0,229,255,0.3); }
+    .info-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+    .info-card h3 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 1rem; margin-bottom: 6px;
+    }
+    .info-card p { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+    .info-card a { color: var(--cyan); font-weight: 500; }
+
+    /* Contact Form */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid rgba(0,229,255,0.15);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: 0 0 40px rgba(0,229,255,0.06);
+    }
+    .form-card h2 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 1.4rem; margin-bottom: 6px;
+    }
+    .form-card p {
+      color: var(--muted); font-size: 0.85rem; margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 0.85rem;
+      font-weight: 500; margin-bottom: 8px; color: var(--text);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(0,229,255,0.4);
+      box-shadow: 0 0 0 3px rgba(0,229,255,0.08);
+    }
+    .form-group select option { background: #1a1c2e; }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan2));
+      color: #000; font-family: var(--font-display);
+      font-weight: 700; font-size: 1rem;
+      border: none; border-radius: var(--radius-sm);
+      padding: 16px; cursor: pointer;
+      transition: all 0.3s; margin-top: 8px;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,229,255,0.35);
+    }
+
+    /* Success Message */
+    .success-msg {
+      display: none;
+      background: rgba(0,229,160,0.1);
+      border: 1px solid rgba(0,229,160,0.3);
+      border-radius: var(--radius-sm);
+      padding: 20px; text-align: center;
+      margin-top: 16px;
+    }
+    .success-msg .success-icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+    .success-msg h3 { color: var(--green); font-weight: 700; margin-bottom: 6px; }
+    .success-msg p { color: var(--muted); font-size: 0.85rem; }
+
+    /* FAQ Section */
+    .faq-section {
+      margin-top: 60px;
+    }
+    .faq-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 1.8rem; margin-bottom: 8px; text-align: center;
+    }
+    .faq-sub {
+      color: var(--muted); text-align: center;
+      margin-bottom: 32px; font-size: 0.9rem;
+    }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .faq-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: border-color 0.3s;
+    }
+    .faq-item:hover { border-color: rgba(0,229,255,0.2); }
+    .faq-item h4 { font-weight: 600; margin-bottom: 8px; font-size: 0.95rem; }
+    .faq-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .contact-title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">ResumeRank<span class="logo-ai">AI</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works">How It Works</a>
+      <a href="/#features">Features</a>
+      <a href="/pricing">Pricing</a>
+    </div>
+    <a href="/" class="btn-nav">Try Free →</a>
+  </div>
+</nav>
+
+<div class="contact-page">
+  <span class="contact-badge">Get in Touch</span>
+  <h1 class="contact-title">We'd Love to <span class="title-gradient">Hear From You</span></h1>
+  <p class="contact-sub">Have a question, feedback, or just want to say hi?<br/>We typically respond within 24 hours.</p>
+
+  <div class="contact-grid">
+
+    <!-- LEFT — Info Cards -->
+    <div class="info-cards">
+      <div class="info-card">
+        <span class="info-icon">📧</span>
+        <h3>Email Us</h3>
+        <p>For general questions and support:<br/>
+        <a href="mailto:support@resumerank.ai">support@resumerank.ai</a></p>
+      </div>
+
+      <div class="info-card">
+        <span class="info-icon">💼</span>
+        <h3>Business & Enterprise</h3>
+        <p>For enterprise plans, partnerships, or API access:<br/>
+        <a href="mailto:business@resumerank.ai">business@resumerank.ai</a></p>
+      </div>
+
+      <div class="info-card">
+        <span class="info-icon">🔒</span>
+        <h3>Privacy & Legal</h3>
+        <p>For privacy concerns or legal inquiries:<br/>
+        <a href="mailto:privacy@resumerank.ai">privacy@resumerank.ai</a></p>
+      </div>
+
+      <div class="info-card" style="border-color: rgba(0,229,255,0.2); background: rgba(0,229,255,0.04);">
+        <span class="info-icon">⚡</span>
+        <h3>Response Time</h3>
+        <p>We typically respond within <strong style="color:var(--cyan)">24 hours</strong> on weekdays. For urgent issues, email us directly.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT — Contact Form -->
+    <div class="form-card">
+      <h2>Send Us a Message</h2>
+      <p>Fill out the form and we'll get back to you as soon as possible.</p>
+
+      <div id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" id="first-name" placeholder="Gokul" required/>
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" id="last-name" placeholder="Selvam" required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="email" placeholder="you@example.com" required/>
+        </div>
+
+        <div class="form-group">
+          <label>Subject *</label>
+          <select id="subject">
+            <option value="">Select a topic...</option>
+            <option value="general">General Question</option>
+            <option value="bug">Bug Report</option>
+            <option value="feature">Feature Request</option>
+            <option value="billing">Billing & Pro Plan</option>
+            <option value="enterprise">Enterprise Inquiry</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea id="message" placeholder="Tell us how we can help you..."></textarea>
+        </div>
+
+        <button class="btn-submit" onclick="handleSubmit()">
+          Send Message →
+        </button>
+      </div>
+
+      <div class="success-msg" id="success-msg">
+        <span class="success-icon">🎉</span>
+        <h3>Message Sent Successfully!</h3>
+        <p>Thank you for reaching out. We'll get back to you within 24 hours at the email you provided.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2 class="faq-title">Common Questions</h2>
+    <p class="faq-sub">Quick answers before you reach out</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>🆓 Is the free plan really free?</h4>
+        <p>Yes! 3 ATS checks per day, forever free. No credit card required.</p>
+      </div>
+      <div class="faq-item">
+        <h4>🔒 Is my resume safe?</h4>
+        <p>Absolutely. Your resume is analyzed in real-time and never stored on our servers.</p>
+      </div>
+      <div class="faq-item">
+        <h4>📄 What file types are supported?</h4>
+        <p>We support PDF, DOC, DOCX, and TXT files up to 5MB for free users.</p>
+      </div>
+      <div class="faq-item">
+        <h4>⚡ How accurate is the ATS score?</h4>
+        <p>Our AI mimics real ATS systems like Workday and Greenhouse with 94% accuracy.</p>
+      </div>
+      <div class="faq-item">
+        <h4>💳 Can I cancel Pro anytime?</h4>
+        <p>Yes, cancel anytime. No fees. Access continues until end of billing period.</p>
+      </div>
+      <div class="faq-item">
+        <h4>🏢 Do you offer team plans?</h4>
+        <p>Yes! Contact us at business@resumerank.ai for enterprise and team pricing.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <span class="logo-icon">⬡</span>
+      <span>ResumeRank<strong>AI</strong></span>
+    </div>
+    <div class="footer-links">
+      <a href="/pricing">Pricing</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <p class="footer-copy">© 2025 ResumeRankAI. Beat Every ATS.</p>
+  </div>
+</footer>
+
+<script>
+function handleSubmit() {
+  const firstName = document.getElementById('first-name').value;
+  const email = document.getElementById('email').value;
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value;
+
+  if (!firstName || !email || !subject || !message) {
+    alert('Please fill in all required fields!');
+    return;
+  }
+
+  if (!email.includes('@')) {
+    alert('Please enter a valid email address!');
+    return;
+  }
+
+  // Show success message
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
+
+  // In production: connect to email service like EmailJS, Formspree, or your backend
+  console.log('Form submitted:', { firstName, email, subject, message });
+}
+</script>
+</body>
+</html>

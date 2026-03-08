@@ -269,5 +269,9 @@ async def privacy(request: Request):
 async def terms(request: Request):
     return templates.TemplateResponse("terms.html", {"request": request})
 
+@app.get("/contact", response_class=HTMLResponse)
+async def contact(request: Request):
+    return templates.TemplateResponse("contact.html", {"request": request})
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
