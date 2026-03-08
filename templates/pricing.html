@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing — ResumeRank AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">ResumeRank<span class="logo-ai">AI</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works">How It Works</a>
+      <a href="/#features">Features</a>
+    </div>
+    <a href="/" class="btn-nav">Try Free →</a>
+  </div>
+</nav>
+
+<section class="pricing-hero">
+  <div class="pricing-badge">Simple, Transparent Pricing</div>
+  <h1 class="pricing-title">Invest in Your Career</h1>
+  <p class="pricing-sub">One great resume pays for itself many times over. Start free, upgrade when you're ready.</p>
+</section>
+
+<section class="pricing-section">
+  <div class="pricing-grid">
+
+    <!-- FREE PLAN -->
+    <div class="pricing-card">
+      <div class="plan-header">
+        <span class="plan-icon">🆓</span>
+        <h3 class="plan-name">Free</h3>
+        <div class="plan-price">
+          <span class="price-num">$0</span>
+          <span class="price-per">/forever</span>
+        </div>
+        <p class="plan-desc">Perfect for occasional job seekers</p>
+      </div>
+      <ul class="plan-features">
+        <li class="feat-item included">✓ 3 ATS checks per day</li>
+        <li class="feat-item included">✓ ATS score (0-100)</li>
+        <li class="feat-item included">✓ Keyword match analysis</li>
+        <li class="feat-item included">✓ 5 improvement suggestions</li>
+        <li class="feat-item included">✓ Section-by-section scores</li>
+        <li class="feat-item excluded">✗ Unlimited checks</li>
+        <li class="feat-item excluded">✗ Detailed AI explanations</li>
+        <li class="feat-item excluded">✗ Cover letter analysis</li>
+        <li class="feat-item excluded">✗ LinkedIn profile optimizer</li>
+        <li class="feat-item excluded">✗ Priority processing</li>
+      </ul>
+      <a href="/" class="btn-plan free">Start Free</a>
+    </div>
+
+    <!-- PRO PLAN -->
+    <div class="pricing-card featured">
+      <div class="plan-badge-top">🔥 Most Popular</div>
+      <div class="plan-header">
+        <span class="plan-icon">⚡</span>
+        <h3 class="plan-name">Pro</h3>
+        <div class="plan-price">
+          <span class="price-num">$9</span>
+          <span class="price-per">/month</span>
+        </div>
+        <p class="plan-desc">For active job seekers & career changers</p>
+      </div>
+      <ul class="plan-features">
+        <li class="feat-item included">✓ Unlimited ATS checks</li>
+        <li class="feat-item included">✓ ATS score with letter grade</li>
+        <li class="feat-item included">✓ Deep keyword analysis</li>
+        <li class="feat-item included">✓ 15+ actionable suggestions</li>
+        <li class="feat-item included">✓ Section-by-section scores</li>
+        <li class="feat-item included">✓ Detailed AI explanations</li>
+        <li class="feat-item included">✓ Cover letter analysis</li>
+        <li class="feat-item included">✓ Resume comparison tool</li>
+        <li class="feat-item included">✓ Priority AI processing</li>
+        <li class="feat-item included">✓ PDF export report</li>
+      </ul>
+      <a href="#" class="btn-plan pro" onclick="handleProSignup(event)">Get Pro — $9/mo</a>
+      <p class="plan-guarantee">✓ 7-day money-back guarantee</p>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="pricing-card">
+      <div class="plan-header">
+        <span class="plan-icon">🏢</span>
+        <h3 class="plan-name">Enterprise</h3>
+        <div class="plan-price">
+          <span class="price-num">Custom</span>
+        </div>
+        <p class="plan-desc">For recruiters, coaches & HR teams</p>
+      </div>
+      <ul class="plan-features">
+        <li class="feat-item included">✓ Everything in Pro</li>
+        <li class="feat-item included">✓ Team dashboard</li>
+        <li class="feat-item included">✓ Bulk resume processing</li>
+        <li class="feat-item included">✓ White-label option</li>
+        <li class="feat-item included">✓ API access</li>
+        <li class="feat-item included">✓ Custom ATS rules</li>
+        <li class="feat-item included">✓ Analytics dashboard</li>
+        <li class="feat-item included">✓ Dedicated support</li>
+        <li class="feat-item included">✓ SLA guarantee</li>
+        <li class="feat-item included">✓ Custom integrations</li>
+      </ul>
+      <a href="mailto:enterprise@resumerank.ai" class="btn-plan enterprise">Contact Sales</a>
+    </div>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>Is my resume safe?</h4>
+        <p>Yes. Your resume is processed in real-time and never stored. We don't retain any personal data after analysis.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What file types do you support?</h4>
+        <p>PDF, DOC, DOCX, and TXT files up to 5MB (15MB for Pro users).</p>
+      </div>
+      <div class="faq-item">
+        <h4>How accurate is the ATS score?</h4>
+        <p>Our AI is trained to mimic the behavior of common ATS systems like Workday, Greenhouse, and Lever. 94% accuracy rate.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I cancel Pro anytime?</h4>
+        <p>Absolutely. Cancel anytime with no fees. Your access continues until the end of the billing period.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do you offer refunds?</h4>
+        <p>Yes — 7-day money-back guarantee, no questions asked.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How is this different from other tools?</h4>
+        <p>We use Claude AI (frontier-level AI) instead of simple keyword matching — giving you nuanced, recruiter-level feedback.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <span class="logo-icon">⬡</span>
+      <span>ResumeRank<strong>AI</strong></span>
+    </div>
+    <div class="footer-links">
+      <a href="/pricing">Pricing</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+    <p class="footer-copy">© 2025 ResumeRankAI. Beat Every ATS.</p>
+  </div>
+</footer>
+
+<script>
+function handleProSignup(e) {
+  e.preventDefault();
+  alert('Stripe payment integration — set up your Stripe account and replace this with a Stripe Checkout link!');
+}
+</script>
+</body>
+</html>
